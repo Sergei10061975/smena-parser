@@ -30,6 +30,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add zakazy.txt 2>/dev/null || true
+          touch zakazy.txt
+          git add zakazy.txt
           git commit -m "Новые заказы $(date +'%Y-%m-%d %H:%M')" || echo "Нет изменений"
           git push
