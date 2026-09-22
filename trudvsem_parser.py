@@ -1,6 +1,6 @@
 # trudvsem_parser.py — парсер вакансий с портала «Работа России»
 import requests
-from config import WORK_WORDS, MONEY_WORDS, STOP_WORDS, CATEGORIES
+from keywords import WORK_WORDS, MONEY_WORDS, STOP_WORDS, CATEGORIES
 
 URL = "https://opendata.trudvsem.ru/api/v1/vacancies/region/46"
 
