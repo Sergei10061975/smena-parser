@@ -1,4 +1,4 @@
-cd ~/smena && cat > keywords.py << 'ENDOFFILE'
+
 # keywords.py — все ключевые слова, стоп-слова и категории
 
 WORK_WORDS = [
@@ -84,4 +84,3 @@ TG_CHANNELS = [
     "rabota_kursk", "vakansii_kursk", "podrabotka_kursk",
     "work_kursk", "kursk_job", "trud_kursk", "rabota46", "vacancy46"
 ]
-ENDOFFILE
