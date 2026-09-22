@@ -1,0 +1,35 @@
+name: Smena Parser
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run Trudvsem parser
+        run: python trudvsem_parser.py
+
+      - name: Run Telegram parser
+        run: python tg_parser.py
+
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add zakazy.txt 2>/dev/null || true
+          git commit -m "Новые заказы $(date +'%Y-%m-%d %H:%M')" || echo "Нет изменений"
+          git push
